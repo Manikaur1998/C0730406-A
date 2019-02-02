@@ -10,27 +10,32 @@ namespace C0730406_A
     {
         static void Main(string[] args)
         {
-
+            countryside c = new countryside();
         }
 
             class village
         {
             bool isAstrildeHere;
-            village nextvillage;
-            village prevvillage;
-            String villagename;
+           public  village nextvillage;
+             public village prevvillage;
+           public String villagename;
 
 
         }
 
         class countryside
         {
-            village mapple;
-            village toronto;
+            village Toronto;
+            village maple;
             village ajax;
+
+            public void rise()
+            {
+                maple = new village();
+                maple.villagename =" Toronto";
+                maple.nextvillage = Toronto;
+            }
         }
-
-
 
     }
 }
