@@ -12,66 +12,58 @@ namespace C0730406_A
         {
             Countryside c = new Countryside();
             c.run();
-
-
+            c.Travel();
+            //new Test().forTest();             // Anonymous Object Reference
+            Console.ReadLine();
         }
     }
-    class LearningExperiment
-    {
-        public void run()
-        {
-            village Toronto;
-            Toronto = new village();
-            village a, b, c;
-            Toronto.villagename = "version A";
-            a = Toronto;
-            Console.WriteLine(a.villagename);
-            Toronto = new village();
-            Toronto.villagename = "version B";
-            b = Toronto;
-            Console.WriteLine(a.villagename);
-            Toronto = new village();
-            Toronto.villagename = "version C";
-            c = Toronto;
-            Console.WriteLine(a.villagename);
-        }
-    }
-    class village
-    {
-        public bool isAstrilde;
-        public village nextvillage;
-        public village prevvillage;
-        public string villagename;
 
+    class Village
+    {
+        public bool isAstrilde = false;
+        public Village nextVillage;
+        public Village prevVillage;
+        public string villageName;
     }
 
     class Countryside
     {
-        village Maple;
-        village Toronto;
-        village Ajax;
+        Village Toronto, Ajax, Maple;
+
+        public Village CurrentVillage { get; private set; }
 
         public void run()
         {
-            Maple = new village();
-            Toronto = new village();
-            Ajax = new village();
+            Maple = new Village();
+            Maple.villageName = "Maple";
+            Toronto = new Village();
+            Toronto.villageName = "Toronto";
+            Ajax = new Village();
             Ajax.isAstrilde = true;
-            Maple.villagename = "Toronto";
-            Maple.nextvillage = Toronto;
+            Ajax.villageName = "Ajax";
+
+            Maple.nextVillage = Toronto;
+            Toronto.nextVillage = Ajax;
+            Ajax.nextVillage = null;
         }
-        public void travel()
+
+        public void Travel()
         {
-            village currentvillage = Toronto;
-            while (!currentvillage.isAstrilde)
+            CurrentVillage = Toronto;
+            while (true)
             {
-                if (currentvillage.isAstrilde)
-                    Console.WriteLine("You found Astrilde in " + currentvillage);
+                if (CurrentVillage.isAstrilde)
+                {
+
+
+                    Console.WriteLine("Astrilde is in : " + CurrentVillage.villageName);
+                    Console.ReadLine();
+                }
                 else
-                    currentvillage = currentvillage.nextvillage;
+                    CurrentVillage = CurrentVillage.nextVillage;
             }
         }
+
+
     }
 }
-
-    
